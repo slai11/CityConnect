@@ -308,8 +308,7 @@ public class CityConnect {
 	private static boolean sameRoute(String startLocation1,
 			String endLocation1, String startLocation2, String endLocation2) {
 
-		if ((startLocation1 == null) || (endLocation1 == null)
-				&& (startLocation2 == null) || (endLocation2 == null)){
+		if (nullRoute(startLocation1, endLocation1, startLocation2, endLocation2)){
 			throw new Error("Route end points cannot be null");
 		}
 
@@ -317,6 +316,13 @@ public class CityConnect {
 				.equalsIgnoreCase(endLocation2))
 				|| (startLocation1.equalsIgnoreCase(endLocation2) && endLocation1
 						.equalsIgnoreCase(startLocation2));
+	}
+
+	private static boolean nullRoute(String SL1, String EL1, String SL2, String EL2){
+		if((SL1 == null) || (EL1 == null)
+				&& (SL2 == null) || (EL2 == null))
+			return true;
+		return false;
 	}
 
 	private static boolean isPositiveNonZeroInt(String s) {
